@@ -1,0 +1,64 @@
+body {
+  text-align: center;
+  margin: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-weight: 600;
+}
+footer {
+  font-size: small;
+  font-family: monospace;
+  color: rgb(78, 78, 78);
+}
+
+.container {
+  max-width: 415px;
+  text-align: left;
+  padding: 50px 75px 50px 85px;
+  border-radius: 3%;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(220, 220, 220, 0.767);
+}
+
+.box {
+  width: 250px;
+  margin: 4px 0 4px 0;
+  border-radius: 3%;
+  border: 2px solid gray;
+  padding: 1px 8px 2px 8px;
+}
+
+.search,
+.location {
+  border-radius: 3%;
+  padding: 1px 15px 2px 15px;
+}
+
+.search {
+  background-color: #bbdb97;
+  border: 1px solid #bbdb97;
+}
+
+.location {
+  background-color: #ffa98e;
+  border: 1px solid #ffa98e;
+}
+
+.mainTemp {
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 13px 0 15px 0;
+}
+
+.currentUnit {
+  font-size: small;
+  position: relative;
+  left: -29px;
+}
+
+.weatherIcon {
+  font-family: var(--bs-body-font-family);
+}
