@@ -23,11 +23,19 @@
   <body>
     <div class="container">
       <form id="search-form">
-        <input type="text" class="box" id="search-input" />
+        <input type="text" class="searchBox" id="search-input" />
         <br />
         <input type="submit" value="search" class="search shadow-sm" />
         <button type="button" class="location shadow-sm" id="location">
           current location
+        </button>
+        <button
+          type="button"
+          class="updateButton shadow-sm"
+          id="update-button"
+          title="Update weather for current city"
+        >
+          🔄
         </button>
       </form>
       <br />

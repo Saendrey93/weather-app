@@ -125,5 +125,15 @@ function searchLocation(event) {
   navigator.geolocation.getCurrentPosition(retrieveLocationWeather);
 }
 
-let button = document.querySelector("#location");
-button.addEventListener("click", searchLocation);
+let locationButton = document.querySelector("#location");
+locationButton.addEventListener("click", searchLocation);
+
+// Update page-Feature: id="update-button"
+
+function grabDisplayedCity() {
+  let city = document.querySelector("#city").innerHTML;
+  searchWeather(city);
+}
+
+let updateButton = document.querySelector("#update-button");
+updateButton.addEventListener("click", grabDisplayedCity);

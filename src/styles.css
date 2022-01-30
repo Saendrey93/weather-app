@@ -30,8 +30,8 @@ a {
   border: 1px solid rgba(143, 172, 190);
 }
 
-.box {
-  width: 250px;
+.searchBox {
+  width: 282px;
   margin: 4px 0 4px 0;
   border-radius: 3%;
   border: 2px solid gray;
@@ -39,7 +39,8 @@ a {
 }
 
 .search,
-.location {
+.location,
+.updateButton {
   border-radius: 3%;
   padding: 1px 15px 2px 15px;
 }
@@ -52,6 +53,13 @@ a {
 .location {
   background-color: #ffa98e;
   border: 1px solid #ffa98e;
+}
+
+.updateButton {
+  background-color: #1b7ac7;
+  border: 0px;
+  padding: 0px 1px 1px 1px;
+  font-size: 18px;
 }
 
 .mainTemp {
