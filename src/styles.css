@@ -13,6 +13,10 @@ footer {
   color: rgb(78, 78, 78);
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   max-width: 415px;
   text-align: left;

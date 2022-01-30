@@ -42,14 +42,17 @@ updateTime();
 // °F = °C * 9 / 5 + 32 <-> (°F − 32) * 5/9
 
 function changeUnit(event) {
+  event.preventDefault();
   let tempToday = document.querySelector("#temp-today");
   if (unit.textContent === "Celsius") {
     let fahrenheitTemp = (baseTemp * 9) / 5 + 32;
     tempToday.innerHTML = Math.round(fahrenheitTemp);
     unit.innerHTML = "Fahrenheit";
+    unit.title = "Conversion into Celsius";
   } else {
     tempToday.innerHTML = Math.round(baseTemp);
     unit.innerHTML = "Celsius";
+    unit.title = "Conversion into Fahrenheit";
 
     updateTime();
   }
