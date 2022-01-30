@@ -65,16 +65,25 @@ currentUnit.addEventListener("click", changeUnit);
 
 function changeWeather(response) {
   console.log(response);
-  let city = document.querySelector("#city");
-  city.innerHTML = response.data.name;
   baseTemp = response.data.main.temp;
-  document.querySelector("#temp-today").innerHTML = Math.round(baseTemp);
-  unit.innerHTML = "Celsius";
+
+  let city = document.querySelector("#city");
+  let icon = document.querySelector("#icon");
+  let tempToday = document.querySelector("#temp-today");
   let mainDescription = document.querySelector("#main-description");
-  mainDescription.innerHTML = response.data.weather[0].main;
   let windSpeed = document.querySelector("#wind-speed");
-  windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   let humidity = document.querySelector("#humidity");
+
+  city.innerHTML = response.data.name;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].main);
+  tempToday.innerHTML = Math.round(baseTemp);
+  unit.innerHTML = "Celsius";
+  mainDescription.innerHTML = response.data.weather[0].description;
+  windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   humidity.innerHTML = Math.round(response.data.main.humidity);
 
   updateTime();

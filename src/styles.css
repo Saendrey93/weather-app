@@ -2,6 +2,7 @@ body {
   text-align: center;
   margin: 20px;
   font-family: "Montserrat", sans-serif;
+  background-color: rgba(143, 172, 190, 0.192);
 }
 
 h1 {
@@ -20,11 +21,13 @@ a {
 .container {
   max-width: 415px;
   text-align: left;
-  padding: 50px 75px 50px 85px;
+  padding: 50px 65px 50px 65px;
   border-radius: 3%;
   display: block;
   margin: 0 auto;
+  margin-bottom: -6px;
   background-color: rgba(220, 220, 220, 0.767);
+  border: 1px solid rgba(143, 172, 190);
 }
 
 .box {
@@ -55,6 +58,8 @@ a {
   font-size: 3rem;
   font-weight: 500;
   margin: 13px 0 15px 0;
+  position: relative;
+  left: -18px;
 }
 
 .currentUnit {
@@ -65,4 +70,5 @@ a {
 
 .weatherIcon {
   font-family: var(--bs-body-font-family);
+  font-size: x-small;
 }
