@@ -43,16 +43,14 @@ updateTime();
 
 function changeUnit(event) {
   let tempToday = document.querySelector("#temp-today");
-  let tempElement = tempToday.innerHTML;
-  let unit = document.querySelector("#unit");
   if (unit.textContent === "Celsius") {
-    let fahrenheitTemp = (tempElement * 9) / 5 + 32;
+    let fahrenheitTemp = (baseTemp * 9) / 5 + 32;
     tempToday.innerHTML = Math.round(fahrenheitTemp);
     unit.innerHTML = "Fahrenheit";
   } else {
-    let celsiusTemp = ((tempElement - 32) * 5) / 9;
-    tempToday.innerHTML = Math.round(celsiusTemp);
+    tempToday.innerHTML = Math.round(baseTemp);
     unit.innerHTML = "Celsius";
+
     updateTime();
   }
 }
@@ -66,14 +64,16 @@ function changeWeather(response) {
   console.log(response);
   let city = document.querySelector("#city");
   city.innerHTML = response.data.name;
-  let tempToday = document.querySelector("#temp-today");
-  tempToday.innerHTML = Math.round(response.data.main.temp);
+  baseTemp = response.data.main.temp;
+  document.querySelector("#temp-today").innerHTML = Math.round(baseTemp);
+  unit.innerHTML = "Celsius";
   let mainDescription = document.querySelector("#main-description");
   mainDescription.innerHTML = response.data.weather[0].main;
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = Math.round(response.data.wind.speed * 3.6);
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = Math.round(response.data.main.humidity);
+
   updateTime();
 }
 
@@ -91,6 +91,9 @@ function handleSubmit(event) {
 
 let currentCity = document.querySelector("#search-form");
 currentCity.addEventListener("submit", handleSubmit);
+
+let baseTemp = null;
+let unit = document.querySelector("#unit");
 
 searchWeather("Berlin");
 
