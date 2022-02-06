@@ -38,8 +38,32 @@ function updateTime() {
 
 updateTime();
 
+// Forecast-feature: id="forecast"
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">${day}</div>
+    <div class="col-2 weatherIcon">☁</div>
+    <div class="col-2">19°</div>
+    <div class="col-6">mainly cloudy</div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Change unit-Feature: id="temp-today"; id="unit"
-// °F = °C * 9 / 5 + 32 <-> (°F − 32) * 5/9
+// °F = °C * 9 / 5 + 32
 
 function changeUnit(event) {
   event.preventDefault();
@@ -108,6 +132,7 @@ let baseTemp = null;
 let unit = document.querySelector("#unit");
 
 searchWeather("Berlin");
+displayForecast();
 
 // Current position-Feature: button-id="location"
 
@@ -131,6 +156,7 @@ locationButton.addEventListener("click", searchLocation);
 // Update page-Feature: id="update-button"
 
 function grabDisplayedCity() {
+  event.preventDefault();
   let city = document.querySelector("#city").innerHTML;
   searchWeather(city);
 }
