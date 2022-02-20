@@ -48,6 +48,8 @@ function formatDay(timestamp) {
 }
 
 function displayForecastCelsius(response) {
+  console.log(response.data.daily);
+
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
@@ -60,7 +62,7 @@ function displayForecastCelsius(response) {
         forecastHTML +
         `
     <div class="col-2">${formatDay(forecastDay.dt)}</div>
-    <div class="col-2 forecastImage"><img
+    <div class="col-2 forecastIcon"><img
     src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
     alt=""
     width="40"
@@ -164,7 +166,6 @@ function retrieveLocationWeather(position) {
 }
 
 function searchLocation(event) {
-  event.preventDefault();
   navigator.geolocation.getCurrentPosition(retrieveLocationWeather);
 }
 

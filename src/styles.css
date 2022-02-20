@@ -21,7 +21,7 @@ a {
 .container {
   max-width: 415px;
   text-align: left;
-  padding: 50px 65px 50px 65px;
+  padding: 50px 55px 30px 51px;
   border-radius: 3%;
   display: block;
   margin: 0 auto;
@@ -31,7 +31,7 @@ a {
 }
 
 .searchBox {
-  width: 282px;
+  width: 299px;
   margin: 4px 0 4px 0;
   border-radius: 3%;
   border: 2px solid gray;
@@ -48,11 +48,13 @@ a {
 .search {
   background-color: #bbdb97;
   border: 1px solid #bbdb97;
+  width: 94px;
 }
 
 .location {
   background-color: #ffa98e;
   border: 1px solid #ffa98e;
+  width: 168px;
 }
 
 .updateButton {
@@ -65,7 +67,7 @@ a {
 .mainTemp {
   font-size: 3rem;
   font-weight: 500;
-  margin: 13px 0 15px 0;
+  margin-top: 13px;
   position: relative;
   left: -18px;
 }
@@ -79,4 +81,11 @@ a {
 .weatherIcon {
   font-family: var(--bs-body-font-family);
   font-size: x-small;
+}
+
+.forecastIcon {
+  margin: 0 auto;
+  padding-top: 0;
+  position: relative;
+  top: -9px;
 }
