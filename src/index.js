@@ -40,23 +40,36 @@ updateTime();
 
 // Forecast-feature: id="forecast"
 
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecast");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+function displayForecastCelsius(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
-    <div class="col-2">${day}</div>
-    <div class="col-2 weatherIcon">☁</div>
-    <div class="col-2">19°</div>
-    <div class="col-6">mainly cloudy</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (0 < index && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <div class="col-2">${formatDay(forecastDay.dt)}</div>
+    <div class="col-2 forecastImage"><img
+    src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+    alt=""
+    width="40"
+    />
+    </div>
+    <div class="col-2">${Math.round(forecastDay.temp.day)}°</div>
+    <div class="col-6">${forecastDay.weather[0].description}</div>
     `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -64,11 +77,9 @@ function displayForecast(response) {
 }
 
 function getCoords(coordinates) {
-  console.log(coordinates);
-
   let apiKey = "006c612abb68e7d0e3bce0ff471b30fe";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayForecastCelsius);
 }
 
 // Change unit-Feature: id="temp-today"; id="unit"
@@ -86,18 +97,16 @@ function changeUnit(event) {
     tempToday.innerHTML = Math.round(baseTemp);
     unit.innerHTML = "Celsius";
     unit.title = "Conversion into Fahrenheit";
-
-    updateTime();
   }
+  updateTime();
 }
 
 let currentUnit = document.querySelector("#unit");
 currentUnit.addEventListener("click", changeUnit);
 
-//Search-Feature
+//Search city-Feature
 
 function changeWeather(response) {
-  console.log(response.data);
   baseTemp = response.data.main.temp;
 
   let city = document.querySelector("#city");
